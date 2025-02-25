@@ -1,15 +1,15 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class Frete {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,14 +38,5 @@ public class Frete {
     @JoinColumn(name = "categoria_frete_id", nullable = false)
     private CategoriaFrete categoriaFrete;
 
-    @OneToMany
-    @JoinColumn(name = "frete_id")
-    private List<ItemFrete> itens;
-
-    public BigDecimal calcularFrete() {
-        BigDecimal distancia = BigDecimal.valueOf(new Distancia().getQuilometros());
-        BigDecimal percentual = BigDecimal.valueOf(categoriaFrete.getPercentualAdicional()).divide(BigDecimal.valueOf(100));
-        return valorKmRodado.multiply(distancia).multiply(BigDecimal.ONE.add(percentual));
-    }
 
 }

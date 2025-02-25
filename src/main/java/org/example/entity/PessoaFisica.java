@@ -1,15 +1,14 @@
 package org.example.entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 @MappedSuperclass
-@Getter
-@Setter
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public abstract class PessoaFisica {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

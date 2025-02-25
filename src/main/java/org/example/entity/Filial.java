@@ -1,14 +1,14 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Filial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,10 +17,6 @@ public class Filial {
     private String nome;
     private String endereco;
     private String telefone;
-
-    @OneToMany
-    @JoinColumn(name = "funcionario_id")
-    private List<Funcionario> funcionarios;
 
 }
 

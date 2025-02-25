@@ -1,25 +1,17 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-import java.util.List;
-
+@Data
+@EqualsAndHashCode(callSuper = true)
 @Entity
-@Getter
-@Setter
+@PrimaryKeyJoinColumn(name = "id_pessoa_fisica")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Cliente extends PessoaFisica {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String contato;
     private boolean ativo;
-
-    @OneToOne
-    @JoinColumn(name = "pessoaFisica_id")
-    private PessoaFisica pessoaFisica;
-
 
 }
 
