@@ -17,7 +17,18 @@ public class DistanciaRepository extends GenericDAO<Distancia> {
                     .setParameter("idDestino", idDestino)
                     .getSingleResult();
         } catch (Exception e) {
-            return null;  // Se não encontrar, retorna null
+            return null;
         }
     }
+    public double calcularDistancia(Long idOrigem, Long idDestino) {
+        Distancia distancia = buscarPorCidades(idOrigem, idDestino);
+
+        if (distancia != null) {
+            return distancia.getQuilometros();
+        } else {
+            System.out.println("Distância entre as cidades não encontrada.");
+            return -1; // Pode ser alterado para lançar uma exceção ou retornar um valor padrão
+        }
+    }
+
 }
