@@ -1,11 +1,9 @@
 package org.example.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
+@Table(name = "cidade")
 @Data
 @Entity
 @AllArgsConstructor
@@ -16,6 +14,8 @@ public class Cidade {
     private Long id;
 
     private String nome;
+
+    @Column(length = 4)
     private String uf;
     private String estado;
 

@@ -3,9 +3,10 @@ package org.example.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Data
+@Table(name = "cliente")
 @EqualsAndHashCode(callSuper = true)
 @Entity
+@Data
 @PrimaryKeyJoinColumn(name = "id_pessoa_fisica")
 @AllArgsConstructor
 @NoArgsConstructor

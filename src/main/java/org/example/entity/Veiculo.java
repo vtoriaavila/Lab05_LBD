@@ -3,6 +3,7 @@ package org.example.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+@Table(name="veiculo")
 @Entity
 @Data
 @AllArgsConstructor
@@ -15,11 +16,11 @@ public class Veiculo {
     private String numeroPlaca;
 
     @ManyToOne
-    @JoinColumn(name = "filial_id")
+    @JoinColumn(name = "filial_id", nullable = false)
     private Filial filial;
 
     @ManyToOne
-    @JoinColumn(name = "tipo_veiculo_id")
+    @JoinColumn(name = "tipo_veiculo_id", nullable = false)
     private TipoVeiculo tipoVeiculo;
 
 }

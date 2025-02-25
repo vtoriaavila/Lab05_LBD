@@ -3,8 +3,8 @@ package org.example.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 
+@Table(name= "funcionario")
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @PrimaryKeyJoinColumn(name = "id_pessoa_fisica")
@@ -16,7 +16,7 @@ public class Funcionario extends PessoaFisica {
     private int matricula;
 
     @ManyToOne
-    @JoinColumn(name = "filial_id")
+    @JoinColumn(name = "filial_id", nullable = false)
     private Filial filial;
 
 }

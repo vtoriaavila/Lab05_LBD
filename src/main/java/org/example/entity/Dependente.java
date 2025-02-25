@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 
+@Table(name="dependente")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,6 +18,6 @@ public class Dependente {
     private LocalDate dataNascimento;
 
     @ManyToOne
-    @JoinColumn(name="id_funcionario")
+    @JoinColumn(name="id_funcionario", nullable = false)
     private Funcionario funcionario;
 }

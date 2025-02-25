@@ -3,6 +3,7 @@ package org.example.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+@Table(name = "distancia")
 @Entity
 @Data
 @AllArgsConstructor
@@ -13,11 +14,11 @@ public class Distancia {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "origem_id")
+    @JoinColumn(name = "origem_id", nullable = false)
     private Cidade origem;
 
     @ManyToOne
-    @JoinColumn(name = "destino_id")
+    @JoinColumn(name = "destino_id", nullable = false)
     private Cidade destino;
 
     private int quilometros;

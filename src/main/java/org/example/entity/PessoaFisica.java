@@ -3,7 +3,7 @@ package org.example.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@MappedSuperclass
+@Table(name="pessoa_fisica")
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Data
