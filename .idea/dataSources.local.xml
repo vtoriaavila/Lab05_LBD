@@ -14,7 +14,7 @@
         <introspection-scope>
           <node kind="schema">
             <name qname="@" />
-            <name qname="lab04_lbd_db" />
+            <name qname="lab05_lbd_test" />
           </node>
         </introspection-scope>
       </schema-mapping>

@@ -1,6 +1,7 @@
 package org.example.repository;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import org.example.entity.Distancia;
 
 public class DistanciaRepository extends GenericDAO<Distancia> {
@@ -8,18 +9,20 @@ public class DistanciaRepository extends GenericDAO<Distancia> {
         super(entityManager);
     }
 
-    public Distancia buscarPorCidades(Long idOrigem, Long idDestino) {
+    public Distancia buscarPorCidades(Long origemId, Long destinoId) {
         try {
             return entityManager.createQuery(
-                            "SELECT d FROM Distancia d WHERE d.cidadeOrigem.id = :idOrigem AND d.cidadeDestino.id = :idDestino",
-                            Distancia.class)
-                    .setParameter("idOrigem", idOrigem)
-                    .setParameter("idDestino", idDestino)
+                            "SELECT d FROM Distancia d WHERE d.origem.id = :origemId AND d.destino.id = :destinoId",
+                            Distancia.class
+                    )
+                    .setParameter("origemId", origemId)
+                    .setParameter("destinoId", destinoId)
                     .getSingleResult();
-        } catch (Exception e) {
-            return null;
+        } catch (NoResultException e) {
+            return null; // Se não encontrar a distância, retorna null em vez de lançar erro
         }
     }
+
     public double calcularDistancia(Long idOrigem, Long idDestino) {
         Distancia distancia = buscarPorCidades(idOrigem, idDestino);
 

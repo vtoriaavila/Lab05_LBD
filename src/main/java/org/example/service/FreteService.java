@@ -34,6 +34,8 @@ public class FreteService {
         );
 
         if (distancia == null) {
+            System.out.println("Não foi possível encontrar a distância entre as cidades: "
+                    + frete.getCidadeOrigem().getId() + " -> " + frete.getCidadeDestino().getId());
             throw new RuntimeException("Distância entre as cidades não encontrada.");
         }
 
@@ -44,12 +46,6 @@ public class FreteService {
 
         return valorTotal.setScale(2, BigDecimal.ROUND_HALF_UP);
     }
-    public Optional<Frete> buscarFretePorId(int id) {
-        if (id <= 0) {
-            throw new IllegalArgumentException("O ID do frete deve ser maior que zero.");
-        }
 
-        return Optional.ofNullable(freteRepository.buscarPorId((long) id));
-    }
 
 }
