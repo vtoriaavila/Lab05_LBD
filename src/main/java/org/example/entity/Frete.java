@@ -5,8 +5,8 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
-@Entity
 @Table(name = "frete")
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
